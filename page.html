@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Magasin d'Informatique</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif; /* Clean, modern font */
+      margin: 0;
+      padding: 0;
+      background-color: #000000; /* Black */
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #00bcd4; /* Cyan for links */
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #00e5ff; /* Lighter cyan on hover */
+    }
+
+    /* Header */
+    header {
+      background-color: #121212; /* Dark black */
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00e5ff; /* Lighter cyan on hover */
+    }
+
+    .lang-switcher a {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    /* Main Content */
+    main {
+      padding: 40px 20px;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #121212; /* Dark black */
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #a0a0a0;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: #1e1e1e; /* Dark gray */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      color: #a0a0a0;
+    }
+
+    /* Used Devices Section */
+    .device-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* Repairs Section */
+    .repairs {
+      text-align: center;
+    }
+
+    .repairs h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .repair-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .repair-item {
+      background-color: #1e1e1e; /* Dark gray */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .repair-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .repair-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .repair-item h3 {
+      margin-top: 0;
+    }
+
+    /* Promotions Section */
+    .promo-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #121212; /* Dark black */
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    footer .contact-info p {
+      margin: 5px 0;
+    }
+
+    footer .socials a {
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home" class="nav-link">Accueil</a></li>
+        <li><a href="#used-devices" class="nav-link">Appareils d'Occasion</a></li>
+        <li><a href="#repairs" class="nav-link">Réparations</a></li>
+        <li><a href="#promotions" class="nav-link">Promotions</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switcher">
+      <a href="?lang=fr">FR</a>
+      <a href="?lang=en">EN</a>
+      <a href="?lang=ar">AR</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home Page -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <h1>Bienvenue dans notre magasin d'informatique</h1>
+        <p>Nous offrons des services de réparation, des appareils d'occasion et des promotions exclusives.</p>
+      </div>
+    </section>
+
+    <!-- Used Devices Page -->
+    <section id="used-devices" class="page">
+      <h1>Appareils d'Occasion</h1>
+      <div class="device-list">
+        <div class="card">
+          <img src="images/laptop1.jpg" alt="Laptop Dell">
+          <h3>Ordinateur Portable Dell</h3>
+          <p>Prix: 300€</p>
+          <p>État: Très bon</p>
+        </div>
+        <div class="card">
+          <img src="images/pc-gamer.jpg" alt="PC Gamer ASUS">
+          <h3>PC Gamer ASUS</h3>
+          <p>Prix: 500€</p>
+          <p>État: Comme neuf</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Repairs Page -->
+    <section id="repairs" class="page">
+      <div class="repairs">
+        <h1>Réparation Chrono</h1>
+        <div class="repair-list">
+          <div class="repair-item">
+            <img src="images/repair-screen.jpg" alt="Réparation d'écrans cassés">
+            <h3>Réparation d'écrans cassés</h3>
+          </div>
+          <div class="repair-item">
+            <img src="images/repair-battery.jpg" alt="Remplacement de batterie">
+            <h3>Remplacement de batterie</h3>
+          </div>
+          <div class="repair-item">
+            <img src="images/repair-motherboard.jpg" alt="Réparation de carte mère">
+            <h3>Réparation de carte mère</h3>
+          </div>
+          <div class="repair-item">
+            <img src="images/repair-virus.jpg" alt="Nettoyage de virus">
+            <h3>Nettoyage de virus</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotions Page -->
+    <section id="promotions" class="page">
+      <h1>Promotions Actuelles</h1>
+      <div class="promo-list">
+        <div class="card">
+          <img src="images/promo1.jpg" alt="Promotion 1">
+          <h3>Réduction de 20% sur les réparations</h3>
+          <p>Valable jusqu'au 31/12/2023</p>
+        </div>
+        <div class="card">
+          <img src="images/promo2.jpg" alt="Promotion 2">
+          <h3>Offre spéciale sur les PC portables</h3>
+          <p>Économisez jusqu'à 150€</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contact-info">
+      <p>Email: contact@monshop.com</p>
+      <p>Téléphone: +123 456 789</p>
+    </div>
+    <div class="socials">
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript to handle page navigation
+    document.addEventListener("DOMContentLoaded", function () {
+      const pages = document.querySelectorAll(".page");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      // Hide all pages except the active one
+      function showPage(pageId) {
+        pages.forEach((page) => {
+          if (page.id === pageId) {
+            page.classList.add("active");
+          } else {
+            page.classList.remove("active");
+          }
+        });
+      }
+
+      // Add click event listeners to navigation links
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetPage = this.getAttribute("href").substring(1); // Remove the #
+          showPage(targetPage);
+        });
+      });
+
+      // Show the home page by default
+      showPage("home");
+    });
+  </script>
+</body>
+</html>
